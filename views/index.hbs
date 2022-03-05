@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-image" style="background-image:url(./img/fondorojo.jpg)">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img style="width: 150px;" src="./img/logo.png" alt="logo" ></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/email">Email</a>
+          </li>
+ {{#if logged}}
+         
+          <li class="nav-item">
+            <a class="nav-link " href="/login/logout">Logout</a>
+          </li>
+          {{else}}
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            {{/if}}
+        </ul>
+      
+      </div>
+    </div>
+  </nav>
+  
+<div class="container d-flex justify-content-center">
+    <div class="col">
+        {{#if logged}}
+        <div class="row">
+            <a class="btn btn-success my-5" href="/addItem">Agregar</a>
+        </div>
+        <div class="row">
+            {{#each products}}
+            <div class="card m-3" style="width: 18rem;">
+                <h5 class="card-title text-info text-center my-3">{{name}}</h5>
+                <img src="{{imageUrl}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text text-dark">{{description}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">$ {{price}}</li>
+                    <li class="list-group-item">Autor {{origin}}</li>
+                    <li class="list-group-item">Editorial {{presentation}}</li>
+                    
+                </ul>
+
+                <div class="card-body">
+                    <a href="editItem/{{id}}" class="btn btn-info">Editar</a>
+                    <a href="editItem/{{id}}" class="btn btn-danger">Borrar</a>
+                </div>
+
+            </div>
+            {{/each}}
+
+        </div>
+        {{else}}
+        <div class="row">
+
+            {{#each products}}
+            <div class="card m-3" style="width: 18rem;">
+                <h5 class="card-title text-info text-center my-3">{{name}}</h5>
+                <img src="{{imageUrl}}" class="card-img-top" alt="...">
+                <div class="card-body">
+
+                    <p class="card-text text-dark">{{description}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">$ {{price}}</li>
+                    <li class="list-group-item">Autor {{origin}}</li>
+                    <li class="list-group-item">Editorial {{presentation}}</li>
+                   
+                </ul>
+
+            </div>
+            {{/each}}
+
+        </div>
+        {{/if}}
+    </div>
+</div>
+

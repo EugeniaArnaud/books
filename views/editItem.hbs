@@ -1,0 +1,97 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-image" style="background-image:url(../img/fondorojo.jpg)">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img style="width: 150px; filter: invert()" src="../img/logo.png" alt="logo" ></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/email">Email</a>
+          </li>
+ {{#if logged}}
+         
+          <li class="nav-item">
+            <a class="nav-link " href="/login/logout">Logout</a>
+          </li>
+          {{else}}
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            {{/if}}
+        </ul>
+      
+      </div>
+    </div>
+  </nav>
+
+<div class="container d-flex justify-content-center">
+    <div class="col-6 ">
+        <h1 class="my-5 text-center">Edicion de producto</h1>
+        <div class="row justify-content-center align-items-center">
+
+            <form action="/editItem/{{row.id}}" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{row.name}}">
+
+                </div>
+                <div class="mb-3">
+                    <label for="origin" class="form-label">Autor</label>
+                    <input type="text" class="form-control" id="origin" name="origin" value="{{row.origin}}">
+                </div>
+                <div class="mb-3">
+                    <label for="presentation" class="form-label">Editorial</label>
+                    <input type="text" class="form-control" id="presentation" name="presentation"
+                        value="{{row.presentation}}">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="description" name="description"
+                        value="{{row.description}}">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Precio</label>
+                    <input type="number" class="form-control" id="price" name="price" value="{{row.price}}">
+                </div>
+              
+
+                {{!-- utilizamos un campo oculto para cargar la imagen para utilizarlo en caso de que no haya cambio
+                --}}
+                <input type="text" value="{{row.image}}" name="imageActual" hidden>
+
+                <div class="mb-3">
+                    <label for="imageFile" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" id="imageFile" name="imageFile">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Modificar</button>
+                <a href="/deleteProduct/{{row.id}}" class="btn btn-danger">Eliminar</a>
+                <a href="/" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<footer class="mt-auto container-fluid text-black d-flex justify-content-center align-items-center">
+   <div>
+    <ul class="navega" >
+      <li class="list-inline-item">
+<a class="decoration" target="blank_" href="https://www.facebook.com"> <img class="logo-redes" src="../img/fb.png" alt="facebook"> </a>
+    </li>
+      <li class="list-inline-item">
+        <a target="blank_" href="https://www.instagram.com"><img class="logo-redes" src="../img/ig.png" alt="instagram"></a>
+      </li>
+      <li class="list-inline-item">
+        <a target="blank_" href="https://twitter.com/maritesarthe"><img class="logo-redes" src="../img/tw.png" alt="twitter"></a>
+      </li>
+         </ul>
+     </div>
+  
+</footer>
